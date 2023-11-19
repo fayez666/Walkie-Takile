@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "997035516134",
+    "project_id": "walkei",
+    "storage_bucket": "walkei.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997035516134:android:f77166b3ea0ebddc585b27",
+        "android_client_info": {
+          "package_name": "com.example.walkie_takile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFeUKxH4lGlqx678lNg-euUbE2f_5tXWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
