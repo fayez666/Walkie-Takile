@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:walkie_takile/pages/home.dart';
 import 'package:walkie_takile/pages/login_page.dart';
 import 'package:walkie_takile/pages/sign_up.dart';
 import 'package:walkie_takile/pages/welcome_page.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         Walkie.id: (context) => const Walkie(),
         LoginPage.id: (context) => const LoginPage(),
         SignUpPage.id: (context) => const SignUpPage(),
+        Home.id: (context) => const Home(),
       },
       theme: ThemeData(
         primaryColor: kColorPrimary,

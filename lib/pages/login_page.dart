@@ -1,11 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../shared/constants.dart';
+import 'home.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
   static const String id = 'login';
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
@@ -38,6 +45,29 @@ class LoginPage extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
+                  onFieldSubmitted: (value) {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        });
+                    try {
+                      final signedInUser =
+                          FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                      if (signedInUser != null) {
+                        Navigator.pop(context);
+                        Navigator.pushReplacementNamed(context, Home.id);
+                      }
+                    } catch (error) {
+                      Navigator.pop(context);
+                      print(error);
+                    }
+                  },
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your email';
@@ -79,7 +109,10 @@ class LoginPage extends StatelessWidget {
                     minimumSize: const Size(300, 50),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, LoginPage.id);
+                    FormState formState = Form.of(primaryFocus!.context!);
+                    if (formState != null && formState.validate()) {
+                    }
+                    Navigator.pushNamed(context, Home.id);
                   },
                   child: const Text('Log in')),
             ],
